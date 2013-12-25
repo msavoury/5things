@@ -1,8 +1,5 @@
-//Players = new Meteor.Collection("players");
-//
-
 function has_username() {
-	return Session.get('user.id') != "";
+	return Session.get('user.id') != "" && Session.get('user.id') != undefined;
 }
 
 if (Meteor.isClient) {
@@ -21,6 +18,10 @@ if (Meteor.isClient) {
 			  var user_id = Players.insert({username: username});
 			  Session.set('user.id', user_id);
 			  Session.set('user.name', username);
+		  }
+
+		  if (has_username()) {
+			  Router.go('lobby');
 		  }
 	  },
 

@@ -1,18 +1,23 @@
 <template name="home">
   {{#if has_username}}
-  	{{greeting}}
+	  {{>greeting}}
   {{else}}
-  	{{>enter_username}}
+	  {{>enter_username}}
   {{/if}}
   <br />
 </template>
 
 <template name="enter_username">
-	<h3>Enter Your Username</h3>
+	<h3>Enter Your Username To Begin</h3>
 	<input type="text"   id="username" name="username" />
 	<br />
 	<br />
 	<input type="button" id="select_username" value="Select"/>
 	<br />
 	<br />
+</template>
+
+<template name="greeting">
+	<h3>Click Enter Lobby to Begin</h3>
+	<input type="" name="" value="">
 </template>

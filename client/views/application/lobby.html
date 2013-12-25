@@ -1,0 +1,12 @@
+<template name="lobby">
+this is the lobby <br />
+<hr />
+There are {{num_of_active_players}} players playing <br />
+There are {{num_of_idle_players}} players in the lobby <br />
+There are {{num_of_games}} games in progress <br />
+	{{#if user_can_play}}
+		go to game
+	{{else}}
+	    wait for active player
+	{{/if}}
+</template>
