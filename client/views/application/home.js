@@ -15,7 +15,7 @@ if (Meteor.isClient) {
 	  'click input#select_username' : function () {
 		  var username = $('#username').val();
 		  if (!has_username() && username != "") {
-			  var user_id = Players.insert({username: username});
+			  var user_id = Players.insert({username: username, status:'idle'});
 			  Session.set('user.id', user_id);
 			  Session.set('user.name', username);
 		  }
