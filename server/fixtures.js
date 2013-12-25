@@ -10,11 +10,11 @@ var fake_players = [
     },  
     {   
         username: 'sergio',
-        status: 'playing',
+        status: 'active',
     },  
     {   
         username: 'kristine',
-        status: 'playing',
+        status: 'active',
     },  
 
 ]
