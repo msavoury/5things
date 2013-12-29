@@ -19,6 +19,8 @@ var fake_players = [
 
 ]
 
-if (Players.find().count() == 0) {
-	fake_players.forEach(function(entry) {Players.insert(entry);});
-}
+Meteor.startup(function() {
+	if (Players.find().count() === 0) {
+		fake_players.forEach(function(entry) {Players.insert(entry);});
+	}
+});
