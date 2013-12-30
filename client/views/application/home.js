@@ -14,6 +14,10 @@ if (Meteor.isClient) {
   Template.enter_username.events( {
 	  'click input#select_username' : function () {
 		  var username = $('#username').val();
+		  if (username == undefined || username == "") {
+			  alert('please enter username');
+			  return;
+		  }
 		  if (!has_username() && username != "") {
 			  var user_id = Players.insert({username: username, status:'idle'});
 			  Session.set('user.id', user_id);
@@ -21,7 +25,8 @@ if (Meteor.isClient) {
 		  }
 
 		  if (has_username()) {
-			  Router.go('lobby');
+			  //find a game and go to
+			  //Router.go('lobby');
 		  }
 	  },
 
