@@ -34,6 +34,7 @@ if (Meteor.isClient) {
 		  }
 
 		  if (has_username()) {
+			  new_user = Players.findOne(user_id);
 			  Meteor.call('assign_user_to_game', new_user, function (error, game_id) {
 				  //alert(game_id);
 				  Router.go('game', {_id:game_id});

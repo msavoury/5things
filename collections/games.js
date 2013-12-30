@@ -13,6 +13,8 @@ function Game() {
 
 	this.submitted_answers = [];
 
+	this.scores = {};
+
 	this.add_user = function(user_id) {
 		this.users.push(user_id);
 		this.user_count++;
@@ -51,7 +53,7 @@ Meteor.methods({
 		}
 	},
 
-	is_answer_correct: function(answer, game) {
+	is_answer_correct: function(answer, game, user_id) {
 		if (game.submitted_answers.indexOf(answer) != -1) {
 			return false;
 		}
@@ -61,7 +63,18 @@ Meteor.methods({
 		if (current_question.answers.indexOf(answer) != -1) {
 			Games.update({_id:game._id}, {$push: {submitted_answers: answer}});
 			//TODO: give player points
+
+			if (game.submitted_answers.length >= 4) {
+				if (game.current_question < game.questions.length - 1) {
+					Games.update({_id:game._id}, {
+												  $inc: {current_question: 1}, 
+						                          $pull: {submitted_answers: {$ne: ""}}
+					                             }
+								);
+				}
+			}
 		}
+
 	}
 
 
