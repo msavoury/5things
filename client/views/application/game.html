@@ -1,3 +1,44 @@
 <template name="game">
-	This is the game template for {{username}}
+	This is the game template for {{logged_in_username}}
+	<br />
+	{{#each users}}
+	  {{username}}
+	{{/each}}
+	<br />
+	{{#if game_is_ready}}
+		{{> gameAction}}
+	{{else}}
+		{{> gameWaiting}}
+	{{/if}}
+</template>
+
+<template name="gameAction">
+	<div id="questionArea">
+		<br />
+		Name 5 of the original 13 colonies
+		<br />
+		<br />
+	</div>
+	<div id="" style="width:100%">
+		<div style="border:1px solid black; width:33%; float:left">
+			{{logged_in_username}} <br />
+			<div id="scoreArea">
+				43
+			</div>
+			<div id="inputArea">
+				<input id="answer" type="text" name="answer" />
+			</div>
+			<input type="button" id="submit" value="submit" />
+			<br />
+			<br />
+			<br />
+		</div>
+		<div style="width:33%; float:left">hello</div>
+		<div style="width:33%; float:left">{{other_username}}</div>
+		<div style="clear:both" />
+    </div>
+</template>
+
+<template name="gameWaiting">
+	Waiting on another player...
 </template>
