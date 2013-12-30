@@ -35,8 +35,8 @@ Template.gameAction.events({
 	  'click input#submit' : function () {
 		  var answer = $('#answer').val();
 		  if (answer != "") {
-
-		  alert(answer);
+			  Meteor.call('is_answer_correct', answer, this, function(error, result) {
+			  });
 		  }
 	  }
 

@@ -11,6 +11,8 @@ function Game() {
 	this.questions = [];
 	this.current_question = 0;
 
+	this.submitted_answers = [];
+
 	this.add_user = function(user_id) {
 		this.users.push(user_id);
 		this.user_count++;
@@ -48,6 +50,10 @@ Meteor.methods({
 			return game_id;
 		}
 	},
+
+	is_answer_correct: function(answer, game) {
+		Games.update({_id:game._id}, {$push: {submitted_answers: answer}});
+	}
 
 
 });

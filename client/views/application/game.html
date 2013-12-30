@@ -33,7 +33,11 @@
 			<br />
 			<br />
 		</div>
-		<div style="width:33%; float:left">hello</div>
+		<div style="width:33%; float:left">
+			{{#each submitted_answers}}
+				{{this}} <br />
+			{{/each}}
+		</div>
 		<div style="width:33%; float:left">{{other_username}}</div>
 		<div style="clear:both" />
     </div>
