@@ -8,6 +8,9 @@ function Game() {
 	this.users = [];
     this.user_count = 0; 
 
+	this.questions = [];
+	this.current_question = 0;
+
 	this.add_user = function(user_id) {
 		this.users.push(user_id);
 		this.user_count++;
@@ -17,6 +20,14 @@ function Game() {
 function add_user_to_game(game, user) {
 	game.users.push(user);
 	game.user_count++;
+}
+
+function add_questions_to_game(game, num_of_questions) {
+	var question_ids = Questions.find(); 
+	question_ids.forEach(function(entry) {
+		game.questions.push(entry._id);
+	});
+
 }
 
 Meteor.methods({
@@ -32,6 +43,7 @@ Meteor.methods({
 		else {
 			var new_game =  new Game();
 			new_game.add_user(user);
+			add_questions_to_game(new_game, 2); //TODO: remove magic number
 			var game_id = Games.insert(new_game);
 			return game_id;
 		}

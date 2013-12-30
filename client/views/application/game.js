@@ -21,5 +21,23 @@ Template.gameAction.helpers({
 		else {
 			return this.users[0].username;
 		}
-	}
+	},
+
+	get_current_question_text: function() {
+		var current_question_num = this.current_question;
+		var current_question_id = this.questions[current_question_num];
+		var current_question = Questions.findOne(current_question_id);
+		return current_question.text; 
+	},
+});
+
+Template.gameAction.events({
+	  'click input#submit' : function () {
+		  var answer = $('#answer').val();
+		  if (answer != "") {
+
+		  alert(answer);
+		  }
+	  }
+
 });
