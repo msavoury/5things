@@ -52,7 +52,16 @@ Meteor.methods({
 	},
 
 	is_answer_correct: function(answer, game) {
-		Games.update({_id:game._id}, {$push: {submitted_answers: answer}});
+		if (game.submitted_answers.indexOf(answer) != -1) {
+			return false;
+		}
+		var current_question_id = game.questions[game.current_question];
+		var current_question = Questions.findOne(current_question_id);
+
+		if (current_question.answers.indexOf(answer) != -1) {
+			Games.update({_id:game._id}, {$push: {submitted_answers: answer}});
+			//TODO: give player points
+		}
 	}
 
 
