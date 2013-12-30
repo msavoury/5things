@@ -13,3 +13,11 @@ Template.lobby.helpers({
 	},
 
 });
+
+Template.lobby.events({
+	  'click input#enter_game' : function () {
+		  /* TODO: Here we have to begin a new game, and get BOTH players 
+		   * to redirect to the game page
+		   */
+	  }
+});
