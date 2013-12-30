@@ -1,4 +1,8 @@
 <template name="home">
+  <br />
+  <div>
+	  There are {{num_of_active_games}} games in progress
+  </div>
   {{#if has_username}}
 	  {{>greeting}}
   {{else}}
