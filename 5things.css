@@ -1,1 +1,28 @@
 /* CSS declarations go here */
+body {
+	font-family: arial;
+	color: #eeeeee;
+	background-color: SteelBlue;
+	margin: 0;
+}
+
+#wrap {
+	text-align:center;
+	font-size:24px;
+	width: 1000px;
+	margin:auto;
+	padding-top:20px;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	height: 1000px;
+	background-color: SkyBlue;
+
+}
+
+#game_title {
+	font-size: 46px;
+	padding: 10px;
+	background-color: orange;
+	width: 300px;
+	margin: auto;
+}

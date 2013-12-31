@@ -1,9 +1,4 @@
 <template name="game">
-	This is the game template for {{logged_in_username}}
-	<br />
-	{{#each users}}
-	  {{username}}
-	{{/each}}
 	<br />
 	{{#if game_is_ready}}
 		{{> gameAction}}
@@ -18,9 +13,10 @@
 		{{get_current_question_text}}
 		<br />
 		<br />
+		<br />
 	</div>
 	<div id="" style="width:100%">
-		<div style="border:1px solid black; width:33%; float:left">
+		<div style="width:33%; float:left">
 			{{logged_in_username}} <br />
 			<div id="scoreArea">
 			   {{logged_in_score}}	
