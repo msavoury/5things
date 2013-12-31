@@ -1,8 +1,6 @@
 <template name="home">
   <br />
-  <div>
-	  There are {{num_of_active_games}} games in progress
-  </div>
+  <div> </div>
   {{#if has_username}}
 	  {{>greeting}}
   {{else}}
@@ -12,7 +10,7 @@
 </template>
 
 <template name="enter_username">
-	<h3>Enter Your Nickname</h3>
+	<h3>Enter A Nickname</h3>
 	<input type="text"   id="username" name="username" />
 	<br />
 	<br />

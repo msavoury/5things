@@ -26,3 +26,23 @@ body {
 	width: 300px;
 	margin: auto;
 }
+
+.scoreArea {
+	width: 200px;
+	height: 200px;
+	text-align: center;
+	margin: auto;
+	background-color: black;
+	font-size: 156px;
+	margin-top: 10px;
+
+}
+
+#answer {
+	width: 200px;
+}
+
+.username {
+	font-size:40px;
+}
+

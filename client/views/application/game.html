@@ -17,8 +17,8 @@
 	</div>
 	<div id="" style="width:100%">
 		<div style="width:33%; float:left">
-			{{logged_in_username}} <br />
-			<div id="scoreArea">
+			<span class="username">{{logged_in_username}}</span> <br />
+			<div class="scoreArea">
 			   {{logged_in_score}}	
 			</div>
 			<div id="inputArea">
@@ -30,14 +30,15 @@
 			<br />
 		</div>
 		<div style="width:33%; float:left">
+			<span class="username">&nbsp;</span> <br />
 			{{#each submitted_answers}}
 				{{this}} <br />
 			{{/each}}
 			&nbsp;
 		</div>
 		<div style="width:33%; float:left">
-			{{other_username}}
-			<div id="scoreArea">
+			<span class="username">{{other_username}}</span>
+			<div class="scoreArea">
 			   {{other_score}}	
 			</div>
 		</div>
