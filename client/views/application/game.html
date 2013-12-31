@@ -23,7 +23,7 @@
 		<div style="border:1px solid black; width:33%; float:left">
 			{{logged_in_username}} <br />
 			<div id="scoreArea">
-				43
+			   {{logged_in_score}}	
 			</div>
 			<div id="inputArea">
 				<input id="answer" type="text" name="answer" />
@@ -39,7 +39,12 @@
 			{{/each}}
 			&nbsp;
 		</div>
-		<div style="width:33%; float:left">{{other_username}}</div>
+		<div style="width:33%; float:left">
+			{{other_username}}
+			<div id="scoreArea">
+			   {{other_score}}	
+			</div>
+		</div>
 		<div style="clear:both" />
     </div>
 </template>

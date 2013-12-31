@@ -63,8 +63,12 @@ Meteor.methods({
 		var current_question = Questions.findOne(current_question_id);
 
 		if (current_question.answers.indexOf(answer) != -1) {
+			var temp = {};
+			var key = "scores."+user_id;
+			temp[key] = 5;
 			Games.update({_id:game._id}, {
 				                            $push: {submitted_answers: answer},
+											$inc: temp,
 										});
 			//TODO: give player points
 
