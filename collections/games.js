@@ -15,15 +15,17 @@ function Game() {
 
 	this.scores = {};
 
-	this.add_user = function(user_id) {
-		this.users.push(user_id);
+	this.add_user = function(user) {
+		this.users.push(user);
 		this.user_count++;
+		this.scores[user._id] = 0;
 	};
 }
 
 function add_user_to_game(game, user) {
 	game.users.push(user);
 	game.user_count++;
+	game.scores[user._id] = 0;
 }
 
 function add_questions_to_game(game, num_of_questions) {
@@ -41,7 +43,7 @@ Meteor.methods({
 
 		if (target_game != undefined) {
 			add_user_to_game(target_game, user);
-			Games.update({_id:target_game._id}, {$push: {users: user}, $inc: {user_count: 1}});
+			Games.update({_id:target_game._id}, target_game);
 			return target_game._id;
 		}
 		else {
@@ -61,14 +63,16 @@ Meteor.methods({
 		var current_question = Questions.findOne(current_question_id);
 
 		if (current_question.answers.indexOf(answer) != -1) {
-			Games.update({_id:game._id}, {$push: {submitted_answers: answer}});
+			Games.update({_id:game._id}, {
+				                            $push: {submitted_answers: answer},
+										});
 			//TODO: give player points
 
 			if (game.submitted_answers.length >= 4) {
 				if (game.current_question < game.questions.length - 1) {
 					Games.update({_id:game._id}, {
 												  $inc: {current_question: 1}, 
-						                          $pull: {submitted_answers: {$ne: ""}}
+						                          $set: {submitted_answers:[]}
 					                             }
 								);
 				}
