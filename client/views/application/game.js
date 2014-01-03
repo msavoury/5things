@@ -60,6 +60,23 @@ Template.gameAction.events({
 			  Meteor.call('is_answer_correct', answer, this, Session.get('user.id'), function(error, result) {
 			  });
 		  }
+	  },
+
+	  'keypress input#answer' : function(event) {
+		  if (event.which == 13){
+			  var answer = $('#answer').val();
+			  if (answer != "") {
+				  Meteor.call('is_answer_correct', answer, this, Session.get('user.id'), function(error, response) {
+
+					  if (response.is_correct) {
+						  //clear the text field
+			  			  $('#answer').val('');
+					  }
+
+				  });
+			  }
+
+		  }
 	  }
 
 });

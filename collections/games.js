@@ -56,13 +56,16 @@ Meteor.methods({
 	},
 
 	is_answer_correct: function(answer, game, user_id) {
+		var response = {};
+
 		if (game.submitted_answers.indexOf(answer) != -1) {
-			return false;
+			response.is_correct = false;
 		}
 		var current_question_id = game.questions[game.current_question];
 		var current_question = Questions.findOne(current_question_id);
 
 		if (current_question.answers.indexOf(answer) != -1) {
+			response.is_correct= true;
 			var temp = {};
 			var key = "scores."+user_id;
 			temp[key] = 5;
@@ -70,7 +73,6 @@ Meteor.methods({
 				                            $push: {submitted_answers: answer},
 											$inc: temp,
 										});
-			//TODO: give player points
 
 			if (game.submitted_answers.length >= 4) {
 				if (game.current_question < game.questions.length - 1) {
@@ -82,7 +84,7 @@ Meteor.methods({
 				}
 			}
 		}
-
+		return response;
 	}
 
 
