@@ -1,8 +1,10 @@
 /* CSS declarations go here */
 body {
 	font-family: arial;
+	font-family:'Josefin Sans', sans-serif;
 	color: #eeeeee;
-	background-color: SteelBlue;
+	/*background-color: #33373B;*/
+	background-color: black;
 	margin: 0;
 }
 
@@ -15,16 +17,68 @@ body {
 	border-left: 1px solid black;
 	border-right: 1px solid black;
 	height: 1000px;
-	background-color: SkyBlue;
+	background-color: #333333;
 
 }
 
 #game_title {
-	font-size: 46px;
+	font-size: 56px;
 	padding: 10px;
-	background-color: orange;
+	background-color: #E57E10;
 	width: 300px;
 	margin: auto;
+}
+
+.flat_btn {
+	padding: 0px;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-bottom: 15px;
+	color: #eeeeee;
+	background-color: #1BA1E2;
+	border: none;
+	font-family:'Josefin Sans', sans-serif;
+	font-size:40px;
+	cursor: pointer;
+}
+.flat_btn:hover {
+	padding: 0px;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-bottom: 15px;
+	color: #fff;
+	background-color: #1BA1E2;
+	border: none;
+	font-family:'Josefin Sans', sans-serif;
+	font-size:40px;
+	font-weight:bold;
+	cursor: pointer;
+}
+
+input#username {
+	font-family:'Josefin Sans', sans-serif;
+	background-color: black;
+	color: #eeeeee;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border: none;
+	font-size:36px;
+	text-align:center;
+}
+
+input#answer {
+	font-family:'Josefin Sans', sans-serif;
+	background-color: #ffffff;
+	border: none;
+	color: #000000;
+	border: none;
+	font-size:20px;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+	text-align: center;
+
 }
 
 .scoreArea {
@@ -33,9 +87,7 @@ body {
 	text-align: center;
 	margin: auto;
 	background-color: black;
-	font-size: 156px;
-	margin-top: 10px;
-
+	font-size: 86px;
 }
 
 #answer {
