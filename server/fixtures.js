@@ -1,6 +1,19 @@
 
 var questions = [
-{ text: 'Name 5 of the original 13 US colonies',
+{
+  text: 'Name 5 of the 7 deadly sins',
+  answers: ['lust', 'gluttony', 'greed', 'sloth', 'wrath','envy','pride'],
+},
+{
+  text: 'Name 5 months with 31 days',
+  answers: ['january', 'march', 'may', 'july', 'august','october','december'],
+},
+{
+  text: 'Name 5 countries that have won the World Cup at least once',
+  answers: ['brazil', 'italy', 'germany', 'argentina', 'uruguay','france','england','spain'],
+},
+{ 
+  text: 'Name 5 of the original 13 US colonies',
   answers: ['virginia','massachusetts','new hampshire','maryland','connecticut','rhode island','delaware','north carolina','south carolina','new jersey','new york','pennsylvania','georgia'],
 },
 {
