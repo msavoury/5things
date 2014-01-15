@@ -57,6 +57,7 @@ Meteor.methods({
 
 	is_answer_correct: function(answer, game, user_id) {
 		var response = {};
+		answer = answer.toLowerCase();
 
 		if (game.submitted_answers.indexOf(answer) != -1) {
 			response.is_correct = false;
