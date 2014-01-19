@@ -54,14 +54,6 @@ Template.gameAction.helpers({
 });
 
 Template.gameAction.events({
-	  'click input#submit' : function () {
-		  var answer = $('#answer').val();
-		  if (answer != "") {
-			  Meteor.call('is_answer_correct', answer, this, Session.get('user.id'), function(error, result) {
-			  });
-		  }
-	  },
-
 	  'keypress input#answer' : function(event) {
 		  if (event.which == 13){
 			  var answer = $('#answer').val();
