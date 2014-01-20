@@ -36,6 +36,9 @@ function add_questions_to_game(game, num_of_questions) {
 
 }
 
+function answer_already_submitted() {
+}
+
 Meteor.methods({
 	assign_user_to_game: function(user) {
 		//find a game that has one user assigned
@@ -57,11 +60,16 @@ Meteor.methods({
 
 	is_answer_correct: function(answer, game, user_id) {
 		var response = {};
+
+		//TODO: trim the answer here 
 		answer = answer.toLowerCase();
 
+		//answer already submitted
 		if (game.submitted_answers.indexOf(answer) != -1) {
 			response.is_correct = false;
+			return response;
 		}
+
 		var current_question_id = game.questions[game.current_question];
 		var current_question = Questions.findOne(current_question_id);
 
