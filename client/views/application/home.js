@@ -1,3 +1,6 @@
+/*
+ * Return whether the curren user has a username set
+ */
 function has_username() {
 	return Session.get('user.id') != "" && Session.get('user.id') != undefined;
 }
@@ -7,6 +10,9 @@ function User(username) {
 	this.status = 'idle';
 }
 
+/*
+ * 
+ */
 function sign_in() {
 	var username_input = $('#username').val();
 	if (username_input == undefined || username_input == "") {
