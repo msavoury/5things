@@ -1,10 +1,13 @@
 /*
- * Return whether the curren user has a username set
+ * Return whether the current user has a username set
  */
 function has_username() {
 	return Session.get('user.id') != "" && Session.get('user.id') != undefined;
 }
 
+/*
+ * Return the current username if set or null 
+ */
 function get_username() {
 	return typeof Session.get('user.id') == "undefined" ? null : Session.get('user.id');
 }
