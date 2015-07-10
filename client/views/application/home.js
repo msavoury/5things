@@ -5,13 +5,17 @@ function has_username() {
 	return Session.get('user.id') != "" && Session.get('user.id') != undefined;
 }
 
+function get_username() {
+	return typeof Session.get('user.id') == "undefined" ? null : Session.get('user.id');
+}
+
 function User(username) {
 	this.username = username;
 	this.status = 'idle';
 }
 
 /*
- * 
+ *  
  */
 function sign_in() {
 	var username_input = $('#username').val();
@@ -30,6 +34,7 @@ function sign_in() {
 	}
 
 	if (has_username()) {
+		user_id = get_username();
 		new_user = Players.findOne(user_id);
 		Meteor.call('assign_user_to_game', new_user, function (error, game_id) {
 			var gameUrl = '/game/' + game_id;
@@ -44,7 +49,6 @@ if (Meteor.isClient) {
   });
 
   Template.home.helpers({
-	  has_username: function() { return false; },
 	  num_of_active_games: function() {return 4;},
   });
 
