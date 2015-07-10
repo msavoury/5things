@@ -8,15 +8,17 @@ function User(username) {
 }
 
 function sign_in() {
-	var username = $('#username').val();
-	if (username == undefined || username == "") {
+	var username_input = $('#username').val();
+	if (username_input == undefined || username_input == "") {
 		alert('please enter username');
 		return;
 	}
 	var new_user;
-	if (!has_username() && username != "") {
-		new_user = new User(username);
-		var user_id = Players.insert(new_user);
+	var user_id;
+
+	if (!has_username()) {
+		new_user = new User(username_input);
+		user_id = Players.insert(new_user);
 		Session.set('user.id', user_id);
 		Session.set('user.name', new_user.username);
 	}
@@ -24,7 +26,8 @@ function sign_in() {
 	if (has_username()) {
 		new_user = Players.findOne(user_id);
 		Meteor.call('assign_user_to_game', new_user, function (error, game_id) {
-			Router.go('game', {_id:game_id});
+			var gameUrl = '/game/' + game_id;
+			Router.go(gameUrl);
 		});
 	}
 }
@@ -34,7 +37,7 @@ if (Meteor.isClient) {
     'click input' : function () { }
   });
 
-  Template.home.helpers( {
+  Template.home.helpers({
 	  has_username: function() { return false; },
 	  num_of_active_games: function() {return 4;},
   });

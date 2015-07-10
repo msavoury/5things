@@ -42,14 +42,17 @@ function answer_already_submitted() {
 Meteor.methods({
 	assign_user_to_game: function(user) {
 		//find a game that has one user assigned
+		console.log("looking for a game");
 		var target_game = Games.findOne({user_count: 1});
 
 		if (target_game != undefined) {
+		console.log("game found!");
 			add_user_to_game(target_game, user);
 			Games.update({_id:target_game._id}, target_game);
 			return target_game._id;
 		}
 		else {
+		console.log("no game found - creating one");
 			var new_game =  new Game();
 			new_game.add_user(user);
 			add_questions_to_game(new_game, 2); //TODO: remove magic number
