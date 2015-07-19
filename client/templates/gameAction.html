@@ -1,0 +1,55 @@
+<template name="gameAction">
+	<div class="row">
+		<div class="col-md-12 text-center question-area">
+			{{get_current_question_text}}
+		</div>
+	</div>
+	<div class="row game-area">
+		<div class="col-md-3 col-md-offset-1 text-center player-column">
+			<div class="row">
+				<div class="col-md-12">
+					<span class="player">{{logged_in_username}}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 score ">
+					{{logged_in_score}}	
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 form-group">
+						<input class="form-control user-input" type="text" id="answer" >
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4 text-center answers">
+			{{#each submitted_answers}}
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3 text-center answer">
+					{{this}}
+				</div>
+			</div>
+			{{/each}}
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3 text-center answer">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 text-center player-column">
+			<div class="row">
+				<div class="col-md-12">
+					<span class="player">{{other_username}}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 score ">
+					{{other_score}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

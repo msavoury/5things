@@ -46,7 +46,7 @@ Meteor.methods({
 		var target_game = Games.findOne({user_count: 1});
 
 		if (target_game != undefined) {
-		console.log("game found!");
+		    console.log("game found!");
 			add_user_to_game(target_game, user);
 			Games.update({_id:target_game._id}, target_game);
 			return target_game._id;
