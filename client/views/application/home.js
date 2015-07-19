@@ -48,10 +48,6 @@ function sign_in() {
 }
 
 if (Meteor.isClient) {
-  Template.home.events({
-    'click input' : function () { }
-  });
-
   Template.home.helpers({
 	  num_of_active_games: function() {return 4;},
   });

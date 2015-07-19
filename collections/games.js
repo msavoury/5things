@@ -95,5 +95,4 @@ Meteor.methods({
 		return response;
 	}
 
-
 });
