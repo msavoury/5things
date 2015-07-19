@@ -1,22 +1,14 @@
-Template.game.helpers({
-    logged_in_username: function () {
-        return Session.get('user.name');
-    },
+Template.registerHelper ('current_username', function() { return Session.get('user.name');}); 
 
+Template.game.helpers({
     game_is_ready: function(game) {
         return this.user_count > 1;
     },
-
 });
 
 Template.gameAction.helpers({
-    //TODO: remove the duplication of this function
-    logged_in_username: function () {
-        return Session.get('user.name');
-    },
     logged_in_score: function() {
         return this.scores[Session.get('user.id')];
-
     },
     other_username: function() {
         if (this.users[0].username == Session.get('user.name')) {

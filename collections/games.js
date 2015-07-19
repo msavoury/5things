@@ -7,14 +7,10 @@ function user_can_play() {
 function Game() {
 	this.users = [];
     this.user_count = 0; 
-
 	this.questions = [];
 	this.current_question = 0;
-
 	this.submitted_answers = [];
-
 	this.scores = {};
-
 	this.add_user = function(user) {
 		this.users.push(user);
 		this.user_count++;
