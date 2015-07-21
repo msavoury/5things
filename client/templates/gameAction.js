@@ -52,7 +52,6 @@ Template.gameAction.events({
                       }
                   });
               }
-
           }
       }
 });

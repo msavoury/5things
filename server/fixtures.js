@@ -31,9 +31,8 @@ var questions = [
 },
 {
   text: 'Name 5 of Santa Claus\' Reindeer',
-  answers: ['dasher', 'dancer', 'prancer', 'vixen', 'comet','cupid','donner','blitzen','rudolph'],
+  answers: ['dasher', 'dancer', 'prancer', 'vixen', 'comet', 'cupid', 'donner', 'blitzen', 'rudolph'],
 },
-
 ]
 
 Meteor.startup(function() {

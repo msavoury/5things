@@ -1,12 +1,8 @@
 Games = new Meteor.Collection('games');
 
-function user_can_play() {
-	return true;
-}
-
 function Game() {
 	this.users = [];
-    this.user_count = 0; 
+	this.user_count = 0; 
 	this.questions = [];
 	this.current_question = 0;
 	this.submitted_answers = [];
@@ -24,21 +20,22 @@ function add_user_to_game(game, user) {
 	game.scores[user._id] = 0;
 }
 
-function add_questions_to_game(game, num_of_questions) {
+/*
+ * Add all known questions to the game
+ */
+//TODO: make it so that only a given number of questions are randomly assigned to the game
+function add_questions_to_game(game) {
 	var question_ids = Questions.find(); 
 	question_ids.forEach(function(entry) {
 		game.questions.push(entry._id);
 	});
-
-}
-
-function answer_already_submitted() {
 }
 
 Meteor.methods({
 	assign_user_to_game: function(user) {
 		//find a game that has one user assigned
 		console.log("looking for a game");
+
 		var target_game = Games.findOne({user_count: 1});
 
 		if (target_game != undefined) {
@@ -48,10 +45,10 @@ Meteor.methods({
 			return target_game._id;
 		}
 		else {
-		console.log("no game found - creating one");
+			console.log("no game found - creating one");
 			var new_game =  new Game();
 			new_game.add_user(user);
-			add_questions_to_game(new_game, 2); //TODO: remove magic number
+			add_questions_to_game(new_game); 
 			var game_id = Games.insert(new_game);
 			return game_id;
 		}
