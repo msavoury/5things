@@ -1,8 +1,12 @@
 <template name="game">
        <br />
-       {{#if game_is_ready}}
-              {{> gameAction}}
+       {{#if game_is_over}}
+              {{> gameOver}}
        {{else}}
+            {{#if game_is_ready}}
+               {{> gameAction}}
+	       {{else}}
                {{> gameWaiting}}
+	     {{/if}}
        {{/if}}
 </template>
