@@ -4,8 +4,7 @@ Template.game.helpers({
         //return this.status == GameConstants.GAME_IN_PROGRESS;
     },
     game_is_over: function(game) {
-	return true;
-	//return this.status == 1;
+	return this.status == 1;
 	//return this.status == GameConstants.GAME_OVER;
     }
 });
