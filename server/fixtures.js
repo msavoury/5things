@@ -33,7 +33,7 @@ var questions = [
 //   answers: ['dasher', 'dancer', 'prancer', 'vixen', 'comet', 'cupid', 'donner', 'blitzen', 'rudolph'],
 // },
 {
-  text: 'Name 5 of the original Sesame Street Characters',
+  text: 'Name 5 of the original Sesame Street characters',
   answers: ['kermit', 'cookie monster', 'bert', 'ernie', 'comet', 'grouch', 'elmo', 'count'],
 },
 ]

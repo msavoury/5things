@@ -1,16 +1,28 @@
+Template.home.helpers({
 /*
  * Return whether the current user has a username set
  */
-function has_username() {
-	return Session.get('user.id') != "" && Session.get('user.id') != undefined;
-}
+    has_username: function() {
+        return Session.get('user.id') != "" && Session.get('user.id') != undefined;
+    },
+});
+
+Template.greeting.helpers({
+    get_username: function() {
+	return Session.get('user.name');
+    }
+});
 
 /*
  * Return the current username if set or null 
  */
 function get_username() {
-	return typeof Session.get('user.id') == "undefined" ? null : Session.get('user.id');
+ return typeof Session.get('user.id') == "undefined" ? null : Session.get('user.id');
 }
+
+function has_username() {
+        return Session.get('user.id') != "" && Session.get('user.id') != undefined;
+ }
 
 function User(username) {
 	this.username = username;
@@ -20,16 +32,17 @@ function User(username) {
 /*
  *  
  */
+//todo: clean this method up
 function sign_in() {
-	var username_input = $('#username').val();
-	if (username_input == undefined || username_input == "") {
-		alert('please enter username');
-		return;
-	}
 	var new_user;
 	var user_id;
 
 	if (!has_username()) {
+	    var username_input = $('#username').val();
+	    if (username_input == undefined || username_input == "") {
+		alert('please enter username');
+		return;
+	    }
 		new_user = new User(username_input);
 		user_id = Players.insert(new_user);
 		console.log("setting the user name in session");
@@ -37,14 +50,12 @@ function sign_in() {
 		Session.set('user.name', new_user.username);
 	}
 
-	if (has_username()) {
-		user_id = get_username();
-		new_user = Players.findOne(user_id);
-		Meteor.call('assign_user_to_game', new_user, function (error, game_id) {
-			var gameUrl = '/game/' + game_id;
-			Router.go(gameUrl);
-		});
-	}
+	user_id = get_username();
+	new_user = Players.findOne(user_id);
+	Meteor.call('assign_user_to_game', new_user, function (error, game_id) {
+		var gameUrl = '/game/' + game_id;
+		Router.go(gameUrl);
+	});
 }
 
 if (Meteor.isClient) {
@@ -57,6 +68,9 @@ if (Meteor.isClient) {
 	  'keydown input#username' : function(event) {
 		  if (event.which == 13) sign_in();
 	  },
+  });
+  Template.greeting.events( {
+	  'click input#play' : function (event) {sign_in();},
   });
 }
 

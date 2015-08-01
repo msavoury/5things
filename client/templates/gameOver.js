@@ -44,10 +44,10 @@ Template.gameOver.helpers({
 	    return 'Tie!';
 	}
 	else if  (this.scores[other._id] > this.scores[user._id]) {
-	    return 'Winner: ' + Session.get('user.name');
+	    return 'Winner: ' + other.username;
 	}
 	else {
-	    return 'Winner: ' + other.username;
+	    return 'Winner: ' + Session.get('user.name');
 	}
     }
 
