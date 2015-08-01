@@ -1,10 +1,14 @@
 Games = new Meteor.Collection('games');
 
 var GameConstants = {
+    //GAME STATUS
     GAME_INIT : 0,
     GAME_OVER : 1,
     GAME_WAITING : 2,
     GAME_IN_PROGRESS : 3,
+
+    //OTHER CONSTANTS
+    POINTS_PER_ANSWER : 5
 
 };
 
@@ -53,6 +57,11 @@ function add_questions_to_game(game) {
 }
 
 Meteor.methods({
+
+    /*
+     * Assign the given user to a game. Create a new game if one 
+     * doesn't already exist.
+     */
     assign_user_to_game: function(user) {
         //find a game that has one user assigned
         console.log("looking for a game");
@@ -65,6 +74,8 @@ Meteor.methods({
             add_user_to_game(target_game, user);
             console.log("game status now is " + target_game.status);
             Games.update({_id:target_game._id}, target_game);
+	    // var cursor = Games.find({_id:target_game._id});
+	    // cursor.observeChanges
             return target_game._id;
         }
         else {
@@ -77,6 +88,28 @@ Meteor.methods({
         }
     },
 
+    /*
+     * Update the game to the next question in the games' question list if 
+     * one is available
+     */
+    move_to_next_question: function(game, user_id) {
+	//only move to next question if we are getting request from user[0]. That way we
+	//ensure only one user is the one moving the questions along
+	if (game.users[0]._id == user_id) {
+	    //This game update is repeated in the is_answer correct function
+	    //it should be moved to one place
+	    //TODO: refactor
+	    Games.update({_id:game._id},
+		    { $inc: {current_question: 1}, 
+			$set: {submitted_answers:[]}
+		    });
+	}
+    },
+
+    /*
+     * Validate if the given answer is a valid response to the current question in the given
+     * game
+     */
     is_answer_correct: function(answer, game, user_id) {
         var response = {
             is_correct: false,
@@ -97,7 +130,7 @@ Meteor.methods({
             response.is_correct = true;
             var temp = {};
             var key = "scores."+user_id;
-            temp[key] = 5;
+            temp[key] = GameConstants.POINTS_PER_ANSWER;
             Games.update({_id:game._id}, { $push: {submitted_answers: answer}, $inc: temp, });
 
             if (game.submitted_answers.length >= 4) {
