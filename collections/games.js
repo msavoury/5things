@@ -14,6 +14,8 @@ var GameConstants = {
 
 };
 
+var GameTimers = {};
+
 function Game() {
     this.status = GameConstants.GAME_INIT;
     this.users = [];
@@ -87,6 +89,7 @@ Meteor.methods({
 		 }
 
 	    }, 1000);
+	    GameTimers[target_game._id] = timer;
             return target_game._id;
         }
         else {
@@ -172,7 +175,10 @@ Meteor.methods({
 	    game.status = GameConstants.GAME_OVER;
 	    Games.update({_id:game._id},
 		    {$set:{status:GameConstants.GAME_OVER}}
-		    );
+	    );
+	    if (GameTimers[game._id]) {
+		Meteor.clearInterval(GameTimers[game._id]);
+	    }
 	}
     }
 });
