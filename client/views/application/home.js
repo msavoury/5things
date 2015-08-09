@@ -40,12 +40,11 @@ function sign_in() {
 	if (!has_username()) {
 	    var username_input = sanitizeString($('#username').val());
 	    if (username_input == undefined || username_input == "") {
-		alert('please enter username');
+		alert('Please enter a username');
 		return;
 	    }
 	    new_user = new User(username_input);
 	    user_id = Players.insert(new_user);
-	    console.log("setting the user name in session");
 	    Session.set('user.id', user_id);
 	    Session.set('user.name', new_user.username);
 	}

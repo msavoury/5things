@@ -73,9 +73,7 @@ Meteor.methods({
 
         if (target_game != undefined) {
             console.log("game found!");
-            console.log("game status is " + target_game.status);
             add_user_to_game(target_game, user);
-            console.log("game status now is " + target_game.status);
             Games.update({_id:target_game._id}, target_game);
 	    var timer = Meteor.setInterval(function() {
 		var game = Games.findOne(target_game._id);
@@ -91,7 +89,6 @@ Meteor.methods({
             return target_game._id;
         }
         else {
-            console.log("no game found - creating one");
             var new_game =  new Game();
             new_game.add_user(user);
             add_questions_to_game(new_game); 
