@@ -8,7 +8,8 @@ var GameConstants = {
     GAME_IN_PROGRESS : 3,
 
     //OTHER CONSTANTS
-    POINTS_PER_ANSWER : 5
+    POINTS_PER_ANSWER : 5,
+    SECONDS_PER_QUESTION : 5
 
 };
 
@@ -20,6 +21,8 @@ function Game() {
     this.current_question = 0;
     this.submitted_answers = [];
     this.scores = {};
+    this.question_time_remaining = GameConstants.SECONDS_PER_QUESTION;
+    this.timerID
     this.add_user = function(user) {
         this.users.push(user);
         this.user_count++;
@@ -74,8 +77,17 @@ Meteor.methods({
             add_user_to_game(target_game, user);
             console.log("game status now is " + target_game.status);
             Games.update({_id:target_game._id}, target_game);
-	    // var cursor = Games.find({_id:target_game._id});
-	    // cursor.observeChanges
+	    var timer = Meteor.setInterval(function() {
+		var game = Games.findOne(target_game._id);
+		game.question_time_remaining = game.question_time_remaining - 1;
+		 if (game.question_time_remaining == 0) {
+		    Meteor.call('move_to_next_question',game);
+		 }
+		 else {
+		    Games.update({_id:target_game._id}, game);
+		 }
+
+	    }, 1000);
             return target_game._id;
         }
         else {
@@ -92,18 +104,17 @@ Meteor.methods({
      * Update the game to the next question in the games' question list if 
      * one is available
      */
-    move_to_next_question: function(game, user_id) {
-	//only move to next question if we are getting request from user[0]. That way we
-	//ensure only one user is the one moving the questions along
-	if (game.users[0]._id == user_id) {
+    move_to_next_question: function(game) {
+	console.log("moving to next question for game:");
+	console.log(game);
 	    //This game update is repeated in the is_answer correct function
+	    //
 	    //it should be moved to one place
 	    //TODO: refactor
 	    Games.update({_id:game._id},
 		    { $inc: {current_question: 1}, 
-			$set: {submitted_answers:[]}
+			$set: {submitted_answers:[], question_time_remaining: GameConstants.SECONDS_PER_QUESTION}
 		    });
-	}
     },
 
     /*

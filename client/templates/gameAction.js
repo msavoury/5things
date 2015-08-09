@@ -35,6 +35,9 @@ Template.gameAction.helpers({
         var current_question = Questions.findOne(current_question_id);
         return current_question.text;
     },
+    get_question_time_remaining: function() {
+	return this.question_time_remaining;
+    },
 });
 
 Template.gameAction.events({
@@ -57,6 +60,7 @@ Template.gameAction.events({
 });
 
 Template.gameAction.onRendered(function() {
+    /*
     var timeInit = 5;
     var timeRemaining = timeInit;
     var timer = this.find('#timer');
@@ -77,6 +81,6 @@ Template.gameAction.onRendered(function() {
 	    timer.innerHTML = '00:0'+ timeRemaining;
 	}
     }, 1000);
-
+    */
 
 });

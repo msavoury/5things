@@ -4,14 +4,14 @@ var questions = [
 //   text: 'Name 5 months with 31 days',
 //   answers: ['january', 'march', 'may', 'july', 'august','october','december'],
 // },
-// {
-//   text: 'Name 5 states that start with the letter "M"',
-//   answers: ['maine', 'maryland', 'massachusetts', 'michigan', 'minnesota','mississippi','missouri','montana'],
-// },
-// {
-//   text: 'Name 5 countries that have won the World Cup at least once',
-//   answers: ['brazil', 'italy', 'germany', 'argentina', 'uruguay','france','england','spain'],
-// },
+ {
+   text: 'Name 5 states that start with the letter "M"',
+   answers: ['maine', 'maryland', 'massachusetts', 'michigan', 'minnesota','mississippi','missouri','montana'],
+ },
+ {
+   text: 'Name 5 countries that have won the World Cup at least once',
+   answers: ['brazil', 'italy', 'germany', 'argentina', 'uruguay','france','england','spain'],
+},
 // {
 //   text: 'Name 5 of Snow White\'s Seven Dwarfs',
 //   answers: ['doc', 'dopey', 'bashful', 'grumpy', 'sneezy','sleepy','happy'],
@@ -39,7 +39,9 @@ var questions = [
 ]
 
 Meteor.startup(function() {
+    	console.log("Meteor starting up");
 	if (Questions.find().count() === 0) {
+	    	console.log("Adding questions to db");
 		questions.forEach(function(entry) {Questions.insert(entry);});
 	}
 });
