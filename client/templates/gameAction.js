@@ -44,6 +44,7 @@ Template.gameAction.events({
       'keypress input#answer' : function(event) {
           if (event.which == 13) {
               var answer = $('#answer').val();
+	      answer = sanitizeString(answer);
               if (answer != "") {
                   Meteor.call('is_answer_correct', answer, this, Session.get('user.id'), function(error, response) {
                       if (response.is_correct) {

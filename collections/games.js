@@ -81,7 +81,7 @@ Meteor.methods({
 		var game = Games.findOne(target_game._id);
 		game.question_time_remaining = game.question_time_remaining - 1;
 		 if (game.question_time_remaining == 0) {
-		    Meteor.call('move_to_next_question',game);
+		    Meteor.call('handle_next_question',game);
 		 }
 		 else {
 		    Games.update({_id:target_game._id}, game);
@@ -105,16 +105,10 @@ Meteor.methods({
      * one is available
      */
     move_to_next_question: function(game) {
-	console.log("moving to next question for game:");
-	console.log(game);
-	    //This game update is repeated in the is_answer correct function
-	    //
-	    //it should be moved to one place
-	    //TODO: refactor
-	    Games.update({_id:game._id},
-		    { $inc: {current_question: 1}, 
-			$set: {submitted_answers:[], question_time_remaining: GameConstants.SECONDS_PER_QUESTION}
-		    });
+	Games.update({_id:game._id},
+		{ $inc: {current_question: 1}, 
+		    $set: {submitted_answers:[], question_time_remaining: GameConstants.SECONDS_PER_QUESTION}
+		});
     },
 
     /*
@@ -145,21 +139,26 @@ Meteor.methods({
             Games.update({_id:game._id}, { $push: {submitted_answers: answer}, $inc: temp, });
 
             if (game.submitted_answers.length >= 4) {
-                if (game.current_question < game.questions.length - 1) {
-                    Games.update({_id:game._id},
-                        { $inc: {current_question: 1}, 
-                              $set: {submitted_answers:[]}
-                            });
-                }
-		else { //game is over
-		    console.log('game is over');
-		    game.status = GameConstants.GAME_OVER;
-                    Games.update({_id:game._id},
-			    {$set:{status:GameConstants.GAME_OVER}}
-			    );
-		}
+		 Meteor.call('handle_next_question', game);
             }
         }
         return response;
+    },
+
+    /*
+     * Move to next question if there are more questions available in the game 
+     * or move to the game end state
+     * */
+    handle_next_question: function(game) {
+	if (game.current_question < game.questions.length - 1) {
+	    Meteor.call('move_to_next_question', game);
+	}
+	else { //game is over
+	    console.log('game is over');
+	    game.status = GameConstants.GAME_OVER;
+	    Games.update({_id:game._id},
+		    {$set:{status:GameConstants.GAME_OVER}}
+		    );
+	}
     }
 });
