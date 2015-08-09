@@ -42,6 +42,8 @@ Template.gameAction.helpers({
 
 Template.gameAction.events({
       'keypress input#answer' : function(event) {
+	  $('#answer').parent().removeClass('has-error');
+	  $('#answer').parent().removeClass('has-success');
           if (event.which == 13) {
               var answer = $('#answer').val();
 	      answer = sanitizeString(answer);
@@ -49,8 +51,10 @@ Template.gameAction.events({
                   Meteor.call('is_answer_correct', answer, this, Session.get('user.id'), function(error, response) {
                       if (response.is_correct) {
                             $('#answer').val('');
+			    $('#answer').parent().addClass('has-success');
                       }
                       else {
+			  $('#answer').parent().addClass('has-error');
                           $('#answer').fadeOut(100);
                           $('#answer').fadeIn(100);
                       }

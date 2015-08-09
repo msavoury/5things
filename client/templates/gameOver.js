@@ -52,6 +52,8 @@ Template.gameOver.helpers({
     }
 
 });
+
 Template.gameOver.onRendered(function () {
+    //take focus so that if user is pressing delete, it won't cause browser to go back
     this.$('#answer').focus();
 });
