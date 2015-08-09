@@ -9,7 +9,8 @@ var GameConstants = {
 
     //OTHER CONSTANTS
     POINTS_PER_ANSWER : 5,
-    SECONDS_PER_QUESTION : 5
+    SECONDS_PER_QUESTION : 8,
+    ANSWERS_PER_QUESTION : 5
 
 };
 
@@ -117,10 +118,11 @@ Meteor.methods({
             is_correct: false,
         };
 
-        //TODO: trim the answer here 
-        answer = answer.toLowerCase();
+        answer = answer.toLowerCase().trim();
 
-        //answer already submitted
+        //check if answer already submitted. this test isn't
+	//strictly necessary, but we are saving some time if the user
+	//happens to type the answer we have set as the normalized answer
         if (game.submitted_answers.indexOf(answer) != -1) {
             return response;
         }
@@ -128,14 +130,29 @@ Meteor.methods({
         var current_question_id = game.questions[game.current_question];
         var current_question = Questions.findOne(current_question_id);
 
-        if (current_question.answers.indexOf(answer) != -1) {
-            response.is_correct = true;
+	Object.keys(current_question.answers).some(function(key) {
+	    if (answer == key) {
+		answer = key;
+		response.is_correct = true;
+		return true;
+	    }
+	    if (current_question.answers[key].constructor === Array && current_question.answers[key].indexOf(answer) != -1) {
+		answer = key;
+		response.is_correct = true;
+		return true;
+	    }
+	    return false;
+	});
+
+	//here we have to check if the given answer is part of submitted answers again,
+	//because now the answer has been normalized 
+        if (response.is_correct && game.submitted_answers.indexOf(answer) == -1) {
             var temp = {};
             var key = "scores."+user_id;
             temp[key] = GameConstants.POINTS_PER_ANSWER;
             Games.update({_id:game._id}, { $push: {submitted_answers: answer}, $inc: temp, });
 
-            if (game.submitted_answers.length >= 4) {
+            if (game.submitted_answers.length >= GameConstants.ANSWERS_PER_QUESTION - 1) {
 		 Meteor.call('handle_next_question', game);
             }
         }
