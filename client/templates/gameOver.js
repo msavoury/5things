@@ -52,3 +52,6 @@ Template.gameOver.helpers({
     }
 
 });
+Template.gameOver.onRendered(function () {
+    this.$('#answer').focus();
+});
