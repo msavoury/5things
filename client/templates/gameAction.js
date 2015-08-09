@@ -59,29 +59,3 @@ Template.gameAction.events({
           }
       }
 });
-
-Template.gameAction.onRendered(function() {
-    /*
-    var timeInit = 5;
-    var timeRemaining = timeInit;
-    var timer = this.find('#timer');
-    var game = this.data;
-    var clock = setInterval(function() {
-	--timeRemaining;
-	if (timeRemaining === 0) {
-	    	//update current question
-		Meteor.call('move_to_next_question', game, Session.get('user.id'), function(error, response) {
-	    });
-	    //refresh timer
-	    timeRemaining = timeInit;
-	}
-	if (timeRemaining >= 10) {
-	    timer.innerHTML = '00:'+ timeRemaining;
-	}
-	else {
-	    timer.innerHTML = '00:0'+ timeRemaining;
-	}
-    }, 1000);
-    */
-
-});
