@@ -1,21 +1,75 @@
-// var questions = [
-// //   text: 'Name 5 months with 31 days',
-// //   answers: ['january', 'march', 'may', 'july', 'august','october','december'],
-//  {
-//    text: 'Name 5 states that start with the letter "M"',
-//    answers: ['maine', 'maryland', 'massachusetts', 'michigan', 'minnesota','mississippi','missouri','montana'],
-//  {
-//    text: 'Name 5 countries that have won the World Cup at least once',
-//    answers: ['brazil', 'italy', 'germany', 'argentina', 'uruguay','france','england','spain'],
-// // {
-// //   text: 'Name 5 of Snow White\'s Seven Dwarfs',
-// //   answers: ['doc', 'dopey', 'bashful', 'grumpy', 'sneezy','sleepy','happy'],
-//
-// //   text: 'Name 5 of the original 13 US colonies',
-// //   answers: ['virginia','massachusetts','new hampshire','maryland','connecticut','rhode island','delaware','north carolina','south carolina','new jersey','new york','pennsylvania','georgia'],
-// // },
-// ];
 var questions = [
+{
+    version: 1,
+    text: 'Name 5 common pizza toppings',
+    answers : { 
+	'pepperoni' : [],
+	'sausage' : [],
+	'italian sausage' : [],
+	'bacon' : [],
+	'ham' : [],
+	'pineapple' : ['pineapples'],
+	'pepper' : ['peppers'],
+	'onion' : ['onions'],
+	'mushroom' : ['mushrooms'],
+	'chicken' : [],
+	'olive' : ['olives', 'green olive', 'green olives'],
+    }
+},
+{
+    version: 1,
+    text: 'Name 5 of Snow White\'s Seven Dwarfs',
+    answers : { 
+	'doc' : [],
+	'dopey' : [],
+	'bashful' : [],
+	'grumpy' : [],
+	'sneezy' : [],
+	'sleepy' : [],
+	'happy' : [],
+    }
+},
+{
+    version: 1,
+    text: 'Name 5 months with 31 days',
+    answers : { 
+	'january' : [],
+	'march' : [],
+	'may' : [],
+	'july' : [],
+	'august' : [],
+	'october' : [],
+	'december' : [],
+    }
+},
+{
+    version: 1,
+    text: 'Name 5 countries that have won the World Cup at least once',
+    answers : { 
+	'brazil' : [],
+	'italy' : [],
+	'germany' : [],
+	'argentina' : [],
+	'uruguay' : [],
+	'france' : [],
+	'england' : [],
+	'spain' : [],
+    }
+},
+{
+    version: 1,
+    text: 'Name 5 states that start with the letter "M"',
+    answers : { 
+	'massachusetts' : [],
+	'maine' : [],
+	'maryland' : [],
+	'michigan' : [],
+	'minnesota' : [],
+	'mississippi' : [],
+	'missouri' : [],
+	'montana' : [],
+    }
+},
 {
     version: 1,
     text: 'Name the 5 of the original 13 US colonies',
