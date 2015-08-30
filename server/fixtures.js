@@ -19,10 +19,6 @@
 // //   text: 'Name 5 of the original 13 US colonies',
 // //   answers: ['virginia','massachusetts','new hampshire','maryland','connecticut','rhode island','delaware','north carolina','south carolina','new jersey','new york','pennsylvania','georgia'],
 // // },
-// {
-//   text: 'Name the 5 great lakes',
-//   answers: ['huron', 'ontario', 'michigan', 'erie', 'superior'],
-// },
 // // {
 // //   text: 'Name 5 of the 7 deadly sins',
 // //   answers: ['lust', 'gluttony', 'greed', 'sloth', 'wrath','envy','pride'],
@@ -31,10 +27,6 @@
 // //   text: 'Name 5 of Santa Claus\' Reindeer',
 // //   answers: ['dasher', 'dancer', 'prancer', 'vixen', 'comet', 'cupid', 'donner', 'blitzen', 'rudolph'],
 // // },
-// {
-//   text: 'name 5 of the original sesame street characters',
-//   answers: ['kermit', 'cookie monster', 'bert', 'ernie', 'comet', 'grouch', 'elmo', 'count'],
-// },
 // ];
 var questions = [
 {
@@ -50,6 +42,21 @@ var questions = [
 },
 {
     version: 1,
+    text: 'Name 5 of Santa Claus Reindeer',
+    answers : { 
+	'dasher' : [],
+	'dancer' : [],
+	'prancer' : [],
+	'vixen' : [],
+	'comet' : [],
+	'cupid' : [],
+	'donner' : [],
+	'blitzen' : [],
+	'rudolph' : [],
+    }
+},
+{
+    version: 1,
     text: 'Name 5 of the original sesame street characters',
     answers : { 
 	'kermit' : ['kermit the frog'],
@@ -60,6 +67,37 @@ var questions = [
 	'elmo' : [],
 	'count' : ['the count'],
 	'oscar' : ['oscar the grouch', 'grouch', 'the grouch'],
+    }
+},
+{
+    version: 1,
+    text: 'Name 5 Disney&copy; princesses',
+    answers : { 
+	'cinderella' : [],
+	'belle' : [],
+	'rapunzel' : [],
+	'snow white' : [],
+	'ariel' : [],
+	'mulan' : [],
+	'aurora' : [],
+	'jasmine' : [],
+	'merida' : [],
+	'pocahontas' : [],
+    }
+},
+{
+    version: 1,
+    text: 'Name 5 planets in the solar system',
+    answers : { 
+	'mercury' : [],
+	'venus' : [],
+	'earth' : [],
+	'mars' : [],
+	'jupiter' : [],
+	'saturn' : [],
+	'uranus' : [],
+	'neptune' : [],
+	'sun' : ['the sun'],
     }
 },
 ];
