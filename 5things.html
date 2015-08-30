@@ -1,13 +1,12 @@
 <head>
   <meta charset="utf-8">
   <title>5things</title>
-  <meta name="description" content="Training">
+  <meta name="description" content="5things 2-player game">
   <meta name="author" content="@marcossavoury">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <!-- Latest compiled and minified CSS -->
  <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -17,15 +16,40 @@
 		ga('create', 'UA-47045204-1', 'meteor.com');
 		ga('send', 'pageview');
 	</script>
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <template name="main">
   <div class="wrap">
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="myModalLabel">5things - How to Play:</h4>
+	      </div>
+	      <div class="modal-body">
+		   <ul>
+		      <li>You and the opposing player will be shown one question at a time</li>
+		      <li>Quickly respond with valid answers to the current question.</li>
+		      <li>For each correct answer you are awarded 5 points. </li>
+		      <li>Once at total of 5 correct answers have been given, a new question is shown.</li>
+		      <li>Most points after 10 questions is the winner</li>
+		  </ul>
+	      </div>
+	      <div class="modal-footer">
+		<button type="button" class="btn btn-primary" data-dismiss="modal">Got it!</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	<div class="row header-area">
 		<div class="col-md-6 col-md-offset-3 text-center">
 		    <a href="/"><span class="logo">5things</span></a>
 		</div>
 		<div class="col-md-3 text-right">
-			<span class="help">help</span>
+		    <span onclick="$('#myModal').modal();" class="glyphicon glyphicon-question-sign"></span>
 			<span class="help" style="visibility:hidden;">about</span>
 		</div>
 	</div>
@@ -47,8 +71,5 @@
 		</div>
 	</footer>
   </div>
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </template>
 
