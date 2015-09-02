@@ -127,6 +127,7 @@ var questions = [
 	'bert' : [],
 	'ernie' : [],
 	'comet' : [],
+	'big bird' : [],
 	'elmo' : [],
 	'count' : ['the count'],
 	'oscar' : ['oscar the grouch', 'grouch', 'the grouch'],
@@ -134,7 +135,7 @@ var questions = [
 },
 {
     version: 1,
-    text: 'Name 5 Disney&copy; princesses',
+    text: 'Name 5 Disney princesses',
     answers : { 
 	'cinderella' : [],
 	'belle' : [],

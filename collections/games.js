@@ -9,7 +9,7 @@ var GameConstants = {
 
     //OTHER CONSTANTS
     POINTS_PER_ANSWER : 5,
-    SECONDS_PER_QUESTION : 20,
+    SECONDS_PER_QUESTION : 25,
     ANSWERS_PER_QUESTION : 5
 
 };
