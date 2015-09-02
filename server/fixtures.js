@@ -14,6 +14,9 @@ var questions = [
 	'mushroom' : ['mushrooms'],
 	'chicken' : [],
 	'olive' : ['olives', 'green olive', 'green olives'],
+	'cheese' : [],
+	'tomato' : ['tomatoes'],
+	'anchovy' : ['anchovies'],
     }
 },
 {
