@@ -167,8 +167,9 @@ var questions = [
 
 Meteor.startup(function() {
     	console.log("Meteor starting up");
-	if (Questions.find().count() === 0) {
-	    	console.log("Adding questions to db");
+    	console.log("Adding questions to db");
+	Questions.remove({});
+//	if (Questions.find().count() === 0) {
 		questions.forEach(function(entry) {Questions.insert(entry);});
-	}
+//	}
 });
