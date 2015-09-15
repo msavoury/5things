@@ -21,6 +21,25 @@ var questions = [
 },
 {
     version: 1,
+    text: 'Name 5 common games played with a standard deck of cards',
+    answers : { 
+	'solitaire' : [],
+	'poker' : [],
+	'hearts' : [],
+	'spades' : [],
+	'bridge' : [],
+	'war' : [],
+	'spit' : [],
+	'freecell' : ['free cell'],
+	'crazy eights' : [],
+	'go fish' : [],
+	'bullshit' : [],
+	'blackjack' : ['21'],
+	'gin rummy' : ['rummy'],
+    }
+},
+{
+    version: 1,
     text: 'Name 5 of Snow White\'s Seven Dwarfs',
     answers : { 
 	'doc' : [],
