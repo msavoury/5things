@@ -86,7 +86,29 @@ var questions = [
 },
 {
     version: 1,
-    text: 'Name 5 countries that have won the World Cup at least once',
+    text: 'What are 5 prime numbers between 20 and 100?',
+    answers : { 
+	'23' : [],
+	'29' : [],
+	'31' : [],
+	'37' : [],
+	'41' : [],
+	'47' : [],
+	'53' : [],
+	'59' : [],
+	'61' : [],
+	'67' : [],
+	'71' : [],
+	'73' : [],
+	'79' : [],
+	'83' : [],
+	'89' : [],
+	'97' : [],
+    }
+},
+{
+    version: 1,
+    text: 'Name 5 countries that have won the FIFA World Cup at least once',
     answers : { 
 	'brazil' : [],
 	'italy' : [],
