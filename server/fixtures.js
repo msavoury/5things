@@ -73,6 +73,28 @@ var questions = [
 },
 {
     version: 1,
+    text: 'Name 5 common types of wood',
+    answers : { 
+	'oak' : [],
+	'maple' : [],
+	'mahogany' : [],
+	'cherry' : [],
+	'walnut' : [],
+	'teak' : [],
+	'pine' : [],
+	'ash' : [],
+	'hickory' : [],
+	'beech' : [],
+	'birch' : [],
+	'cedar' : [],
+	'redwood' : [],
+	'hemlock' : [],
+	'fir' : [],
+	'spruce' : [],
+    }
+},
+{
+    version: 1,
     text: 'Name 5 months with 31 days',
     answers : { 
 	'january' : [],
