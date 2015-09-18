@@ -73,6 +73,35 @@ var questions = [
 },
 {
     version: 1,
+    text: 'Name 5 common types of pasta',
+    answers : { 
+	'angel hair' : [],
+	'cavatappi' : [],
+	'conchiglie' : ['shell', 'shells'],
+	'ditalini' : [],
+	'macaroni' : ['elbow','elbows','elbow macaroni'],
+	'farfalle' : ['bow tie', 'bowtie','bow ties','bowties'],
+	'fettuccine' : [],
+	'fusilli' : [],
+	'gemelli' : [],
+	'linguine' : [],
+	'manicotti' : [],
+	'orzo' : [],
+	'pastina' : [],
+	'penne' : [],
+	'ravioli' : [],
+	'rigatoni' : [],
+	'rotelle' : [],
+	'rotini' : [],
+	'spaghetti' : [],
+	'tortellini' : [],
+	'lasagna' : ['lasagne'],
+	'vermicelli' : [],
+	'ziti' : [],
+    }
+},
+{
+    version: 1,
     text: 'Name 5 common types of wood',
     answers : { 
 	'oak' : [],
@@ -91,6 +120,10 @@ var questions = [
 	'hemlock' : [],
 	'fir' : [],
 	'spruce' : [],
+	'poplar' : [],
+	'elm' : [],
+	'alder' : [],
+	'sycamore' : [],
     }
 },
 {
