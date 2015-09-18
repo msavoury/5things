@@ -73,6 +73,29 @@ var questions = [
 },
 {
     version: 1,
+    text: 'Name 5 human organs',
+    answers : { 
+	'eye' : ['eyes'],
+	'brain' : ['cerebrum'],
+	'heart' : [],
+	'spleen' : [],
+	'liver' : [],
+	'lung' : ['lungs'],
+	'bladder' : [],
+	'gall bladder' : ['gallbladder'],
+	'stomach' : [],
+	'thyroid' : [],
+	'pancreas' : [],
+	'prostate' : [],
+	'appendix' : [],
+	'kidney' : ['kidneys'],
+	'esophagus' : [],
+	'small intestine' : [],
+	'large intestine' : [],
+    }
+},
+{
+    version: 1,
     text: 'Name 5 common types of pasta',
     answers : { 
 	'angel hair' : [],
