@@ -10,7 +10,8 @@ var GameConstants = {
     //OTHER CONSTANTS
     POINTS_PER_ANSWER : 5,
     SECONDS_PER_QUESTION : 25,
-    ANSWERS_PER_QUESTION : 5
+    ANSWERS_PER_QUESTION : 5,
+    QUESTIONS_PER_GAME : 10
 
 };
 
@@ -52,12 +53,12 @@ function add_user_to_game(game, user) {
 }
 
 /*
- * Add all known questions to the game
+ * Add default number of questions to the game
  */
-//TODO: make it so that only a given number of questions are randomly assigned to the game
 function add_questions_to_game(game) {
-    var question_ids = Questions.find(); 
-    question_ids.forEach(function(entry) {
+    var question_ids = Questions.find().fetch();
+    var sampled_ids = _.sample(question_ids, GameConstants.QUESTIONS_PER_GAME);
+    sampled_ids.forEach(function(entry) {
         game.questions.push(entry._id);
     });
 }

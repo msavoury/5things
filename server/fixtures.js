@@ -21,6 +21,26 @@ var questions = [
 },
 {
     version: 1,
+    text: 'Name 5 elements with an atomic number less than 15',
+    answers : { 
+	'hydrogen' : [],
+	'helium' : [],
+	'lithium' : [],
+	'beryllium' : [],
+	'boron' : [],
+	'carbon' : [],
+	'nitrogen' : [],
+	'oxygen' : [],
+	'fluorine' : [],
+	'neon' : [],
+	'sodium' : [],
+	'magnesium' : [],
+	'aluminum' : [],
+	'silicon' : [],
+    }
+},
+{
+    version: 1,
     text: 'Name 5 common games played with a standard deck of cards',
     answers : { 
 	'solitaire' : [],
