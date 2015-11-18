@@ -129,6 +129,7 @@ var questions = [
     answers : { 
 	'oak' : [],
 	'maple' : [],
+	'balsa' : [],
 	'mahogany' : [],
 	'cherry' : [],
 	'walnut' : [],
